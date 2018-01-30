@@ -18,11 +18,10 @@ module.exports.ldap = (passport) => {
 
       req.user = user
 
-      return encrypt(user, (err, basic) => {
+      return encrypt(user, (err, token) => {
         if (err) return next(err)
-        const reply = info || {}
-        reply.token = `JWT ${basic}`
-        res.status(200).json(reply)
+        res.status(200)
+          .json(info || { token })
       })
     })(req, res, next)
   }
@@ -40,16 +39,17 @@ module.exports.bearer = (passport) => {
   }
 
   return (req, res, next) => {
-    const authorization = req.get('Authorization')
-    const key = authorization ? authorization.match(/JWT\s+([\S]+)$/i) || [] : []
-    const token = key[1]
-    if (!authorization || !token) {
+    const token = req.get('Authorization')
+
+    if (!token) {
       return send401(req, res, next)
     }
 
     return decrypt(token, (err, { token } = {}) => {
       if (err) {
-        return (err.name === 'TokenExpiredError') ? send401(req, res, next) : next(err)
+        send401(req, res, next)
+        // Handle jsonwebtoken errors with json.
+        // return (err.name === 'TokenExpiredError') ? send401(req, res, next) : next(err)
       }
       req.user = token
       next()

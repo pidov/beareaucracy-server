@@ -1,3 +1,6 @@
+const dotenv = require('dotenv')
+dotenv.load()
+
 module.exports = {
   app: {
     port: process.env.PORT || 5000
@@ -14,5 +17,8 @@ module.exports = {
       searchBase: process.env.LDAP_SEARCH_BASE || 'dc=example,dc=com',
       searchFilter: process.env.LDAP_SEARCH_FILTER || '(uid={{username}})'
     }
+  },
+  mongodb: {
+    url: process.env.MONGO_URI || 'mongodb://user:password@localhost:19318/hrsystem'
   }
 }
