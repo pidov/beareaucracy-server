@@ -29,4 +29,4 @@ mongoose.connect(config.mongodb.url).then(db => {
 
   app.listen(config.app.port)
 })
-.catch(err => console.log('Failed to initialize database', err))
+.catch(({ message }) => console.log('Failed to initialize database:', message))
