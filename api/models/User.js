@@ -20,10 +20,13 @@ module.exports = {
     },
     position: {
       type: 'string',
-      // enum: []
+      enum: ['developer', 'lead', 'manager'] // TODO: Fill all positions
     },
     identities: {
       type: 'array'
+    },
+    absences: {
+      type: 'array',
     }
   }
 }
