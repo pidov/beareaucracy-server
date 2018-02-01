@@ -1,4 +1,6 @@
-const { encrypt, decrypt } = require('./jwtservice')
+const { sign, verify } = require('./tokenservice')({
+  secret: new Date().toString()
+})
 
 const send401 = (msg, req, res, next) => {
   res.set('WWW-Authenticate', 'Basic').status(401).json(msg || {})
@@ -7,7 +9,9 @@ const send401 = (msg, req, res, next) => {
 
 module.exports.ldap = (passport) => {
   return (req, res, next) => {
+    console.debug('Ldap middleware', req.body)
     return passport.authenticate('ldapauth', (err, user, info) => {
+      console.log(err, user, info)
       if (err) {
         return next(err)
       }
@@ -18,7 +22,7 @@ module.exports.ldap = (passport) => {
 
       req.user = user
 
-      return encrypt(user, (err, token) => {
+      return sign(user, (err, token) => {
         if (err) return next(err)
         res.status(200)
           .json(info || { token })
@@ -45,7 +49,7 @@ module.exports.bearer = (passport) => {
       return send401(req, res, next)
     }
 
-    return decrypt(token, (err, { token } = {}) => {
+    return verify(token, (err, { token } = {}) => {
       if (err) {
         send401(req, res, next)
         // Handle jsonwebtoken errors with json.
