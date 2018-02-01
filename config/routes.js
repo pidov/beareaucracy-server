@@ -32,7 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'POST /authorize': 'AuthController.authorize'
+  'POST /api/authorize': 'AuthController.authorize'
 
   /***************************************************************************
   *                                                                          *

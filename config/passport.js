@@ -9,6 +9,6 @@ passport.use(new LdapStrategy({
     searchBase: process.env.LDAP_SEARCH_BASE || 'dc=example,dc=com',
     searchFilter: process.env.LDAP_SEARCH_FILTER || '(uid={{username}})'
   }
-}, (user, cb) => {
-  Users.findOrCreate({email: user.mail}).exec(cb)
+}, ({ mail: email }, next) => {
+  User.findOrCreate({ email }).exec(next)
 }))

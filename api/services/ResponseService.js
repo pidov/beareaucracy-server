@@ -1,15 +1,12 @@
 module.exports = {
-  json: function (status, res, message, data, meta) {
-    const response = {
-      message
+  json: async (res, status = 200, data, message, meta) => {
+    try {
+      return await res.status(status).json({ message, data, meta })
+    } catch (e) {
+      sails.log.debug(e.message)
+      sails.log.debug( res)
+      return {message: 'Unexpected error occured'}
+      return res.status(500).send()
     }
-
-    if (typeof data !== 'undefined') {
-      response.data = data
-    }
-    if (typeof meta !== 'undefined') {
-      response.meta = meta
-    }
-    return res.status(status).json(response)
   }
 }
