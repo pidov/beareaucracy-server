@@ -5,13 +5,18 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "@sailshq/upgrade": "^1.0.9",
     "include-all": "^1.0.0",
     "jsonwebtoken": "^8.1.1",
     "passport": "^0.4.0",
     "passport-ldapauth": "^2.0.0",
     "rc": "1.0.1",
-    "sails": "~0.12.14",
-    "sails-disk": "~0.10.9"
+    "sails": "^1.0.0-0",
+    "sails-disk": "~0.10.9",
+    "sails-hook-grunt": "^3.0.2",
+    "sails-hook-orm": "^2.0.0-0",
+    "sails-hook-sockets": "^1.5.2-0",
+    "sails-mongo": "^1.0.0-11"
   },
   "scripts": {
     "debug": "node debug app.js",
