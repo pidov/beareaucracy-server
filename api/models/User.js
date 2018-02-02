@@ -6,7 +6,12 @@
  */
 
 module.exports = {
+  primaryKey: '_id',
   attributes: {
+    _id: {
+      type: 'text',
+      columnType: 'objectid'
+    },
     email: {
       type: 'email',
       required: true,
@@ -23,10 +28,12 @@ module.exports = {
       enum: ['developer', 'lead', 'manager'] // TODO: Fill all positions
     },
     identities: {
-      type: 'array'
+      type: 'json',
+      columnType: 'array'
     },
     absences: {
-      type: 'array',
+      type: 'json',
+      columnType: 'array'
     }
   }
 }

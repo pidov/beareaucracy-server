@@ -10,8 +10,9 @@ module.exports.datastores = {
   // this file that were actually being used.  Your original `connections` config is
   // still available as `config/connections-old.js.txt`.
 
-  default: {
+  mongodb: {
     adapter: 'sails-mongo',
+    adapterApiVersion: 1,
     host: 'ds119988.mlab.com',
     port: 19988,
     user: 'ipidov',

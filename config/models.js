@@ -22,7 +22,7 @@ module.exports.models = {
   // that models will use, unless overridden directly in the model file in `api/models`.
   // It defaults to a datastore called `default`, which (unless otherwise configured in
   // the `config/datastores.js` file) uses the built-in `sails-disk` adapter.
-  // datastore: 'default',
+  datastore: 'mongodb',
 
   // Because you can't have the old `connection` setting at the same time as the new
   // `datastore` setting, we'll set it to `null` here.  When you merge this file into your
@@ -42,7 +42,7 @@ module.exports.models = {
     // not a valid model option.  Instead, you define it yourself and tell Sails which
     // attribute to use as the primary key by setting the `primaryKey` setting on the model.
     // That setting defaults to `id`.
-    id: { type: 'number', autoIncrement: true, }
+    // id: { type: 'number', autoIncrement: true, }
   },
 
   /******************************************************************************
@@ -60,6 +60,5 @@ module.exports.models = {
   ******************************************************************************/
   dataEncryptionKeys: {
     default: 'pDFO7u9U6yrmDnJ7J9mwLob5diD83qhYYBzYCz4kEY4='
-  },
-  migrate: 'alter'
+  }
 };

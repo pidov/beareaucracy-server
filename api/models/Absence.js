@@ -6,27 +6,35 @@
  */
 
 module.exports = {
+  primaryKey: '_id',
   attributes: {
+    _id: {
+      type: 'text',
+      columnType: 'objectid'
+    },
     startDate: {
-      type: 'date',
+      type: 'string',
+      columnType: 'date',
       required: true
     },
     endDate: {
-      type: 'date',
+      type: 'string',
+      columnType: 'date',
       required: true
     },
     submittedAt: {
-      type: 'date',
+      type: 'string',
+      columnType: 'date',
       required: true
     },
-    type: {
+    absenceType: {
       type: 'string',
       defaultsTo: 'paid',
       enum: ['paid', 'unpaid', 'sick']
     },
     attachments: {
-      type: 'array'
+      type: 'json',
+      columnType: 'array'
     }
   }
-};
-
+}

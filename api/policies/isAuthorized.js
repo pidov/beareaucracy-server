@@ -1,25 +1,26 @@
-const extractBearerFromRequest = ({ headers }) => {
-  const { authorization } = headers
-  const [ scheme, credentials ] = authorization.split(' ')
 
-  return /^Bearer$/i.test(scheme) && credentials
-}
 
-module.exports = async (req, res, next) => {
-  const { headers } = req
-  const token = extractBearerFromRequest(req)
+module.exports =  function (req, res, next) {
+  sails.log.info('Authorizing user.')
+  const token = RequestService.getBearer(req)
 
   if (!token) return ResponseService.json(res, 401, undefined, 'Token not found. Format is Authorization: Bearer [token]')
 
-  if (headers && headers.authorization) {
-    JwtService.verify(token, async (err, { id }) => {
-      if (err) return ResponseService.json(res, 401, undefined, 'Expired or invalid token')
-
-      const user = await User.findOne({ id })
+  JwtService.verify(token, (err, decoded) => {
+    if (err) {
+      sails.log.error('Couldn\'t verify Bearer token')
+      sails.log.debug('Token verification error: ', err)
+      return ResponseService.json(res, 401, undefined, 'Expired or invalid token')
+    }
+    
+    User.findOne({ id: decoded.id }).exec((err, user) => {
+      if (!user) {
+        sails.log.error('Can\'t find user in database. A user with active token was probably deleted.')
+        sails.log.debug(err, user)
+        return ResponseService.json(res, 401, undefined, 'Expired or invalid token')
+      }
       req.user = user
       next()
     })
-  } else {
-    return ResponseService.json(res, 401, undefined, "No authorization header was found");
-  }
+  })
 }
