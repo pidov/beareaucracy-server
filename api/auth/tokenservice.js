@@ -6,16 +6,13 @@ module.exports = ({secret, ttl = 3600} = {}) => {
   }
 
   return {
-    sign(text, next) {
-      console.log('Signing', text)
+    sign (text, next) {
       jwt.sign({ token: text }, secret, { expiresIn: ttl }, next)
     },
-    verify(token, next) {
+    verify (token, next) {
       jwt.verify(token, secret, (err, ...rest) => {
-        console.log(err, ...rest)
-        next(err, ...rest) 
+        next(err, ...rest)
       })
     }
   }
 }
-

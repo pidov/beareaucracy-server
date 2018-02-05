@@ -12,14 +12,15 @@ var corsOptions = {
 }
 
 mongoose.connect(config.mongodb.url).then(db => {
+  console.log('Database connected')
   const app = express()
 
   app.use(cors(corsOptions))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
-  
+
   app.use('/api', api(config))
 
-  app.listen(config.app.port)
+  app.listen(config.app.port, message => console.log(`Server started on port ${config.app.port}`))
 })
 .catch(({ message }) => console.log('Failed to initialize database:', message))
