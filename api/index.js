@@ -5,11 +5,11 @@ const { User } = require('./auth/User')
 const { ldap, bearer } = require('./auth')
 
 module.exports = config => {
-    passport.use(new LdapStrategy(config.ldap, User.upsertLdapUser.bind(User)))
+  passport.use(new LdapStrategy(config.ldap, User.upsertLdapUser.bind(User)))
 
-    router.use(passport.initialize())
-    router.use('/login', ldap(passport))
-    router.use(/^\/(?!login).*/, bearer(passport))
+  router.use(passport.initialize())
+  router.use('/authorize', ldap(passport))
+  router.use(/^\/(?!authorize).*/, bearer(passport))
 
-    return router
+  return router
 }
