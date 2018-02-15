@@ -1,0 +1,135 @@
+{
+  "data": {
+    "users": [
+      {
+        "email": "gauss@ldap.forumsys.com",
+        "createdAt": "2018-02-01T21:24:53.640Z",
+        "updatedAt": "2018-02-01T21:24:53.640Z",
+        "id": 1
+      }
+    ],
+    "absences": [],
+    "absence": [],
+    "user": [
+      {
+        "email": "gauss@ldap.forumsys.com",
+        "createdAt": "2018-02-01T22:55:58.179Z",
+        "updatedAt": "2018-02-01T22:55:58.179Z",
+        "id": 1
+      }
+    ]
+  },
+  "schema": {
+    "users": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "absences": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "absence": {
+      "startDate": {
+        "type": "date"
+      },
+      "endDate": {
+        "type": "date"
+      },
+      "submittedAt": {
+        "type": "date"
+      },
+      "type": {
+        "type": "string",
+        "defaultsTo": "paid",
+        "enum": [
+          "paid",
+          "unpaid",
+          "sick"
+        ]
+      },
+      "attachments": {
+        "type": "array"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "name": {
+        "type": "string"
+      },
+      "displayName": {
+        "type": "string"
+      },
+      "position": {
+        "type": "string",
+        "enum": [
+          "developer",
+          "lead",
+          "manager"
+        ]
+      },
+      "identities": {
+        "type": "array"
+      },
+      "absences": {
+        "type": "array"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "users": {
+      "id": 1
+    },
+    "user": {
+      "id": 1
+    },
+    "absences": {},
+    "absence": {}
+  }
+}

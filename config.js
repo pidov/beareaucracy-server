@@ -19,6 +19,6 @@ module.exports = {
     }
   },
   mongodb: {
-    url: process.env.MONGO_URI || 'mongodb://user:password@localhost:19318/hrsystem'
+    url: process.env.MONGO_URI || 'mongodb://ipidov:password@ds119988.mlab.com:19988/hrsails'
   }
 }
