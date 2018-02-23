@@ -1,0 +1,226 @@
+<style>
+  html {
+
+    font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    padding: 0 4rem;
+  }
+  table, table th, table td {
+    font-weight: bold;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  table th, table td {
+    padding: 5px;
+  }
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  header, .spread {
+    text-transform: uppercase;
+    justify-content: space-between;
+    display: flex;
+  }
+  .signature {
+    width: 200px;
+  }
+  h1 {
+    text-transform: uppercase;    
+    font-size: 1rem;
+    text-align: center;
+  }
+  h2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  hr {
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .field {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .field .fieldValue {
+    flex-grow: 10;
+  }
+  .field .fieldLabel {
+    width: 100px;
+  }
+  .fieldValue {
+    border-bottom: 1px solid black;
+    display: inline
+  }
+  .fieldValue.fixed {
+    display: inline-block;
+  }
+  .fieldValue.small {
+    width: 3rem;
+  }
+  .fieldValue.medium {
+    width: 6rem
+  }
+  .fieldValue.large {
+    width: 9rem;
+  }
+  .fieldValue.huge {
+    width: 16rem;
+  }
+  .strike {
+    text-decoration: line-through;
+  }
+  .submitDate {
+    display: flex;
+    justify-content: space-between
+  }
+  .submitDate .field {
+    width: 12rem;
+  }
+</style>
+<html>
+  <body>
+    <header class='seciton'>
+      <div>
+        разрешил:
+        <br>
+        (Управител)
+      </div>
+      <div>
+        до
+        <br>
+        Управителя
+        <br>
+        на тик42 бг оод
+      </div>
+    </header>
+    <main>
+      <section class='section'>
+        <section class='section'>
+          <h1>
+            Заявление
+          </h1>
+          <div class='field'>
+            <div class='fieldLabel'>От</div>
+            <div class='fieldValue'>Иван Пидов</div>
+          </div>
+          <div class='field'>
+            <div class='fieldLabel'>Длъжност</div>
+            <div class='fieldValue'>Програмист</div>
+          </div>
+        </section>
+        <section class='section'>
+          <p>
+            Г-н Управител,
+          </p>
+          <p>
+            Моля, да ми разрешите да ползвам <span class='fieldValue'> 3 (три)</span> дни
+          </p>
+          <p>
+            платен /  <span class="strike">неплатен</span> отпуск за 2018 г. от <span class='fieldValue'> 28.12.2018 </span>
+          </p>
+        </section>
+        <div class='meta'>
+          <div class='submitDate'>
+            <div class='field'>
+              <div class='fieldLabel'>гр. София, </div>
+              <div class='fieldValue'></div>
+            </div>
+            <div class='field'>
+              <div class='fieldLabel'>С Уважение: </div>
+              <div class='fieldValue'></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class='section'>
+        <h1>Заповед</h1>
+        <p>Разрешавам искания отпуск, както следва:</p>
+        <p>
+          <span class='fieldValue fixed large'></span> дни за <span class='fieldValue fixed medium'></span> г., съгласно чл. <span class='fieldValue fixed small'></span>, т. <span class='fieldValue fixed medium'></span> от КТ
+        </p>
+        <p>
+          <span class='fieldValue fixed large'></span> дни за <span class='fieldValue fixed medium'></span> г., съгласно чл. <span class='fieldValue fixed small'></span>, т. <span class='fieldValue fixed medium'></span> от КТ
+        </p>
+        <p>
+          <span class='fieldValue fixed large'></span> дни за <span class='fieldValue fixed medium'></span> г., съгласно чл. <span class='fieldValue fixed small'></span>, т. <span class='fieldValue fixed medium'></span> от КТ
+        </p>
+        <p>
+          и <span class='fieldValue fixed large'></span> дни  <span class='fieldValue fixed huge'></span> 
+        </p>
+        <p>
+          считано от <span class='fieldValue fixed large'></span>
+        </p>
+      </section>
+    </main>
+    <footer>
+      <h2>Попълва се служебно</h2>
+      <hr>
+      <table class='section'>
+        <tr>
+          <th>
+            Година
+          </th>
+          <th>
+            Право на платен годишен отпуск чл.155
+          </th>
+          <th>
+            Право на допълнителен отпуск
+          </th>
+          <th>
+            Ползва
+          </th>
+          <th>
+            Остават за ползване
+          </th>
+          <th>
+            Отложени по реда на чл.176
+          </th>
+        </tr>
+        <tr>
+          <td>
+            2016
+          </td>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>
+            2017
+          </td>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>
+            2018
+          </td>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </table>
+      <div class='spread'>
+        <div></div>
+        <div class="signature">
+          Подпис
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
